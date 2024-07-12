@@ -1,0 +1,27 @@
+<form [formGroup]="questionsForm" (ngSubmit)="onSubmit()">
+        <p-floatLabel>
+          <input id="question" type="text" pInputText formControlName="question"/>
+          <label for="question">Question</label>
+        </p-floatLabel>
+        
+        <p-floatLabel>
+            <input id="answer" type="text" pInputText formControlName="answer"/>
+            <label for="answer">Answer</label>
+        </p-floatLabel>
+        <p-checkbox 
+        formControlName="required" 
+        value="true" 
+        inputId="req" />
+    <label for="req">სავალდებულო</label>
+
+
+    <button type="submit" pButton label="Submit" class="button"></button>
+  </form>
+
+  <p>გადმოგზავნილი / შევსებული კითხვები </p>
+<div *ngFor="let quest of questionsarray">
+    <div *ngFor="let answer of quest.answers">
+      {{ answer.name}} {{ answer.lastname }}
+    </div>
+  </div>
+  

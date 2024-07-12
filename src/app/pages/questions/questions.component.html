@@ -1,0 +1,21 @@
+<form [formGroup]="questionsForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="questions">
+      <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
+        <p-floatLabel>
+          <input id="question-{{i}}" type="text" pInputText formControlName="question"/>
+          <label for="question-{{i}}">Question {{i + 1}}</label>
+        </p-floatLabel>
+        <div formArrayName="answers">
+          <div *ngFor="let answer of getAnswers(question).controls; let j = index" [formGroupName]="j">
+            <p-floatLabel>
+              <input id="answer-{{i}}-{{j}}" type="text" pInputText formControlName="answer"/>
+              <label for="answer-{{i}}-{{j}}">Answer {{j + 1}}</label>
+            </p-floatLabel>
+          </div>
+        </div>
+        <button (click)="addAnswer(i)" pButton type="button" label="Add Answer" class="button"></button>
+      </div>
+    </div>
+    <button (click)="addQuestion()" pButton type="button" label="Add Question" class="button"></button>
+    <button type="submit" pButton label="Submit" class="button"></button>
+  </form>

@@ -1,0 +1,60 @@
+<div >
+  <a routerLink="/questionaire">კითხვარი</a>
+
+  <button (click)="showloginform()" pButton type="submit" label="ავტორიზაცია" class="button"></button>
+  <button (click)="showregisterform()" pButton type="submit" label="რეგისტრაცია" class="button"></button>
+
+<form  [formGroup]="loginForm" *ngIf="loginformshow&&!registerformshow" (ngSubmit)="onLoginSubmit()" class="loginform">
+    <p-floatLabel>
+        <input id="username" type="text" pInputText formControlName="username" [ngClass]="{
+            'ng-invalid':
+            loginForm.get('username')?.invalid && loginForm.get('username')?.touched,
+            'ng-dirty':loginForm.get('username')?.invalid && loginForm.get('username')?.touched                 
+          }"  class="input"/>
+        <label for="username"></label>
+    </p-floatLabel>
+
+    <p-floatLabel>
+        <input id="password" type="password" pPassword formControlName="password" [ngClass]="{
+            'ng-invalid':
+            loginForm.get('password')?.invalid && loginForm.get('password')?.touched,
+            'ng-dirty':loginForm.get('password')?.invalid && loginForm.get('password')?.touched                 
+          }" class="input"/>
+        <label for="password">Password</label>
+      </p-floatLabel>
+      <button pButton type="submit" label="Login" class="button"></button>
+</form>
+
+<form *ngIf="registerformshow&&!loginformshow" [formGroup]="registrationForm" (ngSubmit)="onRegisterSubmit()" class="form">
+  <p-floatLabel>
+      <input id="name" type="text" pInputText formControlName="name"  [ngClass]="{
+          'ng-invalid':
+          registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched,
+          'ng-dirty':registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched                 
+        }" />
+      <label for="name">სახელი</label>
+  </p-floatLabel>
+
+  <p-floatLabel>
+    <input id="username" type="text" pInputText formControlName="username" [ngClass]="{
+        'ng-invalid':
+        loginForm.get('username')?.invalid && loginForm.get('username')?.touched,
+        'ng-dirty':loginForm.get('username')?.invalid && loginForm.get('username')?.touched                 
+      }"  class="input"/>
+    <label for="username">მომხმარებლის სახელი</label>
+</p-floatLabel>
+
+  
+<p-floatLabel>
+  <input id="password" type="password" pPassword formControlName="password" [ngClass]="{
+      'ng-invalid':
+      registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched,
+      'ng-dirty':registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched                 
+    }" />
+  <label for="password">პაროლი</label>
+</p-floatLabel>
+
+<button pButton type="submit" label="Register" class="button"></button>
+
+</form>
+</div>
